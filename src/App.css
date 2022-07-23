@@ -1,3 +1,13 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&family=Kanit:wght@300&family=Lora:wght@400;500&display=swap');
+
+
+*{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Kanit', sans-serif;
+  font-family: 'Lora', serif;
+  color:rgb(52, 52, 52);
+}
+
+.nav-bar{
+  background-color:transparent;
 }
