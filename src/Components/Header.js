@@ -1,11 +1,8 @@
 import { Container } from "react-bootstrap";
-import background from '../icon/bg.png'
 
 const Header = () => {
     return ( 
-        <Container style={{
-            backgroundImage:`url(${background})`,
-        }}>
+        <Container>
                 <div style={{textAlign:"center"}} className="mt-4">
                 <h1>
                     Crypto Tracker
