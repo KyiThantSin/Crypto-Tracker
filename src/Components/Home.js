@@ -5,9 +5,7 @@ import background from '../icon/bg1.jpg'
 
 const Home = () => {
     return ( 
-        <Container style={{
-            backgroundImage:`url(${background})`,
-        }}>
+        <Container>
             <Header />
             <CarouselCard />
         </Container>

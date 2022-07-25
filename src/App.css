@@ -11,3 +11,7 @@
 .nav-bar{
   background-color:transparent;
 }
+
+.items{
+  transition: 8s;
+}
