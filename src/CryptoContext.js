@@ -4,11 +4,11 @@ const Crypto = createContext();
 
 const CryptoContext = ({children}) => {
     const [currency , setCurrency] = useState('MMK')
-    const [symbol, setSymbol] = useState('K')
+    const [symbol, setSymbol] = useState('Ks')
     
     useEffect(()=>{
         if(currency ==='USD') setSymbol('$')
-        else if(currency ==='MMK') setSymbol('K')
+        else if(currency ==='MMK') setSymbol('Ks')
     },[currency])
 
     return ( 

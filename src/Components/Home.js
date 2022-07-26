@@ -6,8 +6,12 @@ import background from '../icon/bg1.jpg'
 const Home = () => {
     return ( 
         <Container>
-            <Header />
-            <CarouselCard />
+            <div style={{
+                backgroundImage: `url(${background})`,
+                }}>
+                <Header />
+                <CarouselCard />
+            </div>
         </Container>
      );
 }

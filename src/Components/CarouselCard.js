@@ -6,6 +6,7 @@ import { CryptoState } from "../CryptoContext";
 import '../App.css';
 import Coins from "./Coins";
 
+
 const CarouselCard = () => {
     const {currency} = CryptoState();
     console.log(currency)
@@ -24,7 +25,7 @@ const CarouselCard = () => {
     //console.log(trendingCoins.length)
 
     return ( 
-        <Container>
+        <Container className="m-3 p-2 mt-4">
             {
                     trendingCoins && trendingCoins.length > 0 ? 
                     (
@@ -32,12 +33,15 @@ const CarouselCard = () => {
                                 autoPlay={true}
                                 controls={false}
                                 indicators={false}
-                                className="items">
+                                style={{justifyItems:"center"}}>
                          <Carousel.Item >
-                            <Coins coin={trendingCoins.slice(0,4)}/>
+                            <Coins coin={trendingCoins.slice(0,3)}/>
+                         </Carousel.Item>
+                         <Carousel.Item >
+                            <Coins coin={trendingCoins.slice(3,6)}/>
                          </Carousel.Item>
                          <Carousel.Item>
-                            <Coins coin={trendingCoins.slice(4,8)}/>
+                            <Coins coin={trendingCoins.slice(6,9)}/>
                          </Carousel.Item>
                       </Carousel>
                     )
@@ -49,16 +53,3 @@ const CarouselCard = () => {
  
 export default CarouselCard;
 
-/***
- *  trendingCoins.map((coin) => {
-                        return(
-                            <Carousel>
-                                <Carousel.Item>
-                                <Col key={coin.id} md={3} xs={6} className="p-4">
-                                    <Coins coin={coin}/>
-                                </Col>
-                                </Carousel.Item>
-                            </Carousel>
-                        )
-                    }) 
- */
