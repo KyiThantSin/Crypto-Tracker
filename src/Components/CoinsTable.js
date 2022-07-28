@@ -4,11 +4,15 @@ import { Container, Spinner, Table } from "react-bootstrap";
 import { CoinList } from "../config/api";
 import { CryptoState } from "../CryptoContext";
 import { Button , Row, Col} from "react-bootstrap";
+import { numberWithCommas } from "./Coins";
+import SearchCoin from "./SearchCoin";
+
 
 const CoinsTable = () => {
     const [coinLists , setCoinLists] = useState('');
     const [loading, setLoading] = useState(false)
-    
+    const [searchCoin , setSearchCoin] = useState('');
+    const [toggle, setToggle] = useState(false)
     //currency from CryptoState
     const {currency,symbol} = CryptoState();
 
@@ -18,14 +22,34 @@ const CoinsTable = () => {
         setCoinLists(data)
         setLoading(false)
     }
+
     useEffect(()=>{
         fetchCoinLists();
     },[currency])
 
-    console.log(coinLists)
+    //console.log(coinLists)
+
+    //search coinLists
+    const onSearchEvent = (keywords) =>{
+       const handleSearch = coinLists.filter((coins)=> coins.name.toLowerCase().includes(keywords.toLowerCase()))
+        console.log(handleSearch)
+        setSearchCoin(handleSearch);
+        
+    }
+    const tableData = searchCoin ? searchCoin : coinLists;
+
+    //toggle fav icon
+    const onToggleHandler = (id) =>{
+        setToggle(!toggle);
+    }
+
     return ( 
         <Container>
             <h5>Cryptocurrency Prices by Market Cap</h5>
+
+            <SearchCoin onSearchEvent={onSearchEvent}/>
+
+            <div className="mt-3">
             { loading ? <div style={{justifyContent:"center"}} className="p-2">
                             <Spinner animation="border" variant="primary" /> 
                             Loading...
@@ -43,28 +67,29 @@ const CoinsTable = () => {
                                 <th>24h Change</th>
                                 <th>Market Cap</th>
                             </tr>
-                        </thead>
-                           
+                        </thead>                 
                         <tbody> 
                             {   //map coinLists tr
-                                coinLists && coinLists.slice(0,5).map((coin)=>{
+                                tableData && tableData.slice(0,5).map((coin)=>{
                                     const profit = coin.market_cap_change_percentage_24h >= 0;
 
                                     return(
                                         <tr style={{textAlign:"center"}} key={coin.id}>
                                             <td>
-                                                <Button variant="light">
-                                                    <img src={require('../icon/heart.png')} alt="heart icon" 
-                                                            />
+                                                <Button variant="light"
+                                                        onClick={() => onToggleHandler(coin.id)}>
+                                                    <img src={ toggle ? require('../icon/red.png') : require('../icon/heart.png')} 
+                                                         alt="heart icon" 
+                                                    />
                                                 </Button>
                                             </td>
                                             <td>
                                                 <Row>
                                                     <Col md={3} >
                                                         <img src={`${coin.image}`} alt={coin.name}
-                                                            style={{width:"50px"}}/>
+                                                            style={{width:"50px", marginLeft:"8px"}}/>
                                                     </Col>
-                                                    <Col md={9}>
+                                                    <Col md={9} className="mt-2">
                                                        <h5 style={{fontWeight:"bold"}}>
                                                             {coin.symbol.toUpperCase()}
                                                         </h5>
@@ -73,7 +98,7 @@ const CoinsTable = () => {
                                                 </Row>
                                             </td>
                                             <td>
-                                                {symbol} {coin.current_price}
+                                               <b> {symbol} </b> {numberWithCommas(coin.current_price)}
                                             </td>
                                             <td>
                                                 {
@@ -90,7 +115,9 @@ const CoinsTable = () => {
                             }
                         </tbody>
                     </Table>             
-            }          
+            }  
+            </div>
+                    
         </Container>
      );
 }

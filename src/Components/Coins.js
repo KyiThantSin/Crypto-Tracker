@@ -1,6 +1,10 @@
 import { Container , Row, Col} from "react-bootstrap";
 import { CryptoState } from "../CryptoContext";
 
+export function numberWithCommas(x){
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
 const Coins = (props) => {
     const {symbol} = CryptoState();
 
@@ -29,7 +33,7 @@ const Coins = (props) => {
                                     </span>
                                 </span>
                                 <br />
-                                <b>{symbol} {item.current_price} </b>
+                                <b>{symbol} {numberWithCommas(item.current_price)} </b>
                             </Col>
                         )
                     })
