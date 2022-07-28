@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap";
 import CarouselCard from "./CarouselCard";
 import Header from "./Header";
 import background from '../icon/bg1.jpg'
+import CoinsTable from "./CoinsTable";
 
 const Home = () => {
     return ( 
@@ -12,6 +13,8 @@ const Home = () => {
                 <Header />
                 <CarouselCard />
             </div>
+            <br />
+            <CoinsTable />
         </Container>
      );
 }

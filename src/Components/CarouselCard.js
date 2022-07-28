@@ -23,7 +23,7 @@ const CarouselCard = () => {
     },[currency])
 
     //console.log(trendingCoins.length)
-
+ 
     return ( 
         <Container className="m-3 p-2 mt-4">
             {
@@ -35,13 +35,13 @@ const CarouselCard = () => {
                                 indicators={false}
                                 style={{justifyItems:"center"}}>
                          <Carousel.Item >
-                            <Coins coin={trendingCoins.slice(0,3)}/>
+                            <Coins coin={trendingCoins.slice(0,3)} />
                          </Carousel.Item>
                          <Carousel.Item >
-                            <Coins coin={trendingCoins.slice(3,6)}/>
+                            <Coins coin={trendingCoins.slice(3,6)} />
                          </Carousel.Item>
                          <Carousel.Item>
-                            <Coins coin={trendingCoins.slice(6,9)}/>
+                            <Coins coin={trendingCoins.slice(6,9)} />
                          </Carousel.Item>
                       </Carousel>
                     )
