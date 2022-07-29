@@ -6,13 +6,16 @@ import { CryptoState } from "../CryptoContext";
 import { Button , Row, Col} from "react-bootstrap";
 import { numberWithCommas } from "./Coins";
 import SearchCoin from "./SearchCoin";
+import FavCoin from "./FavCoin";
+import Pagination from 'react-bootstrap/Pagination';
 
 
 const CoinsTable = () => {
     const [coinLists , setCoinLists] = useState('');
     const [loading, setLoading] = useState(false)
     const [searchCoin , setSearchCoin] = useState('');
-    const [toggle, setToggle] = useState(false)
+    const [page, setPage] = useState(1);
+
     //currency from CryptoState
     const {currency,symbol} = CryptoState();
 
@@ -36,20 +39,31 @@ const CoinsTable = () => {
         setSearchCoin(handleSearch);
         
     }
+
     const tableData = searchCoin ? searchCoin : coinLists;
 
-    //toggle fav icon
-    const onToggleHandler = (id) =>{
-        setToggle(!toggle);
+    //pagination
+    const onPaginationHandler = (number) =>{
+        setPage(number)
+        window.scroll(0,0)
     }
 
+    let items = [];
+        for (let number = 1; number <= (tableData.length/10); number++) {
+        items.push(
+            <Pagination.Item key={number} active={number === page}
+                            onClick={() => onPaginationHandler(number)}>
+                {number}
+            </Pagination.Item>,
+        );
+        }
     return ( 
         <Container>
-            <h5>Cryptocurrency Prices by Market Cap</h5>
+            <h4>Cryptocurrency Prices by Market Cap</h4>
 
-            <SearchCoin onSearchEvent={onSearchEvent}/>
+            <SearchCoin onSearchEvent={onSearchEvent} />
 
-            <div className="mt-3">
+            <div className="mt-4">
             { loading ? <div style={{justifyContent:"center"}} className="p-2">
                             <Spinner animation="border" variant="primary" /> 
                             Loading...
@@ -70,18 +84,13 @@ const CoinsTable = () => {
                         </thead>                 
                         <tbody> 
                             {   //map coinLists tr
-                                tableData && tableData.slice(0,5).map((coin)=>{
+                                tableData && tableData.slice((page-1)*10,(page-1)*10 + 10).map((coin)=>{
                                     const profit = coin.market_cap_change_percentage_24h >= 0;
 
                                     return(
                                         <tr style={{textAlign:"center"}} key={coin.id}>
                                             <td>
-                                                <Button variant="light"
-                                                        onClick={() => onToggleHandler(coin.id)}>
-                                                    <img src={ toggle ? require('../icon/red.png') : require('../icon/heart.png')} 
-                                                         alt="heart icon" 
-                                                    />
-                                                </Button>
+                                                <FavCoin />
                                             </td>
                                             <td>
                                                 <Row>
@@ -107,7 +116,7 @@ const CoinsTable = () => {
                                                 }   
                                             </td>
                                             <td>
-                                                {coin.market_cap}
+                                                {numberWithCommas(coin.market_cap).toString().slice(0,-6)}M
                                             </td>
                                         </tr>
                                     )
@@ -117,7 +126,11 @@ const CoinsTable = () => {
                     </Table>             
             }  
             </div>
-                    
+
+            <Pagination className="mt-4 float-end ml-3 mb-4">
+                        {items}
+            </Pagination>
+                
         </Container>
      );
 }

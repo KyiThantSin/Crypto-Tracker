@@ -8,13 +8,17 @@ const Navbar = () => {
         <Container className="nav-bar p-2">
             <Row className="mt-3">
 
-                <Col md={10} xs={6}>
+                <Col md={8} xs={4}>
                     <h4 style={{fontWeight:"600",color:"#F6BA00"}}>
                         Crypto Tracker
                     </h4>
                 </Col>
-                
-                <Col md={2} xs={6}>
+                <Col md={2} xs={4}>
+                    Watchlist
+                    &nbsp;
+                    <img src={require("../icon/red.png")} alt="heart icon"/>
+                </Col>
+                <Col md={2} xs={4}>
                     <Form.Select  
                                 onChange={(e) => setCurrency(e.target.value)}
                                 value={currency}>

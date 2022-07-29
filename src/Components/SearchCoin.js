@@ -11,7 +11,7 @@ const SearchCoin = (props) => {
     }
 
     return ( 
-        <Container>
+        <Container className="mt-3">
             <Form>
                 <Row>
                     <Col md={8} xs={8}>
