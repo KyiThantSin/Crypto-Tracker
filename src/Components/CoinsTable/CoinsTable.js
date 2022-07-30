@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container, Spinner, Table } from "react-bootstrap";
-import { CoinList } from "../config/api";
-import { CryptoState } from "../CryptoContext";
+import { CoinList } from "../../config/api";
+import { CryptoState } from "../../CryptoContext";
 import { Button , Row, Col} from "react-bootstrap";
-import { numberWithCommas } from "./Coins";
-import SearchCoin from "./SearchCoin";
+import { numberWithCommas } from "../MainPageHeader/Coins";
+import SearchCoin from "../SearchCoin";
 import FavCoin from "./FavCoin";
 import Pagination from 'react-bootstrap/Pagination';
 

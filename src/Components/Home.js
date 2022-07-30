@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
-import CarouselCard from "./CarouselCard";
-import Header from "./Header";
+import CarouselCard from "./MainPageHeader/CarouselCard";
+import Header from "./MainPageHeader/Header";
 import background from '../icon/bg1.jpg'
-import CoinsTable from "./CoinsTable";
+import CoinsTable from "./CoinsTable/CoinsTable";
 
 const Home = () => {
     return ( 

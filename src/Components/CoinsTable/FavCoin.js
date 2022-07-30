@@ -12,7 +12,7 @@ const FavCoin = () => {
     return ( 
         <Button variant="light"
                 onClick={onToggleHandler}>
-            <img src={ toggle ? require('../icon/red.png') : require('../icon/heart.png')} 
+            <img src={ toggle ? require('../../icon/red.png') : require('../../icon/heart.png')} 
                 alt="heart icon" 
             />
         </Button>

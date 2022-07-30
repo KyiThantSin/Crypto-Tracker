@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container, Row , Col, Carousel } from "react-bootstrap";
-import { TrendingCoins } from "../config/api";
-import { CryptoState } from "../CryptoContext";
-import '../App.css';
+import { TrendingCoins } from "../../config/api";
+import { CryptoState } from "../../CryptoContext";
+import '../../App.css';
 import Coins from "./Coins";
 
 
