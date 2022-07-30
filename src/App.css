@@ -12,6 +12,6 @@
   background-color:transparent;
 }
 
-.items{
-  transition: 8s;
+.coin-name:hover{
+  color: #ffcb2d;
 }

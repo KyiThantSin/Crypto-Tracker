@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { Container, Spinner, Table } from "react-bootstrap";
 import { CoinList } from "../../config/api";
 import { CryptoState } from "../../CryptoContext";
-import { Button , Row, Col} from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
 import { numberWithCommas } from "../MainPageHeader/Coins";
 import SearchCoin from "../SearchCoin";
 import FavCoin from "./FavCoin";
 import Pagination from 'react-bootstrap/Pagination';
-
+import { Link } from "react-router-dom";
+import '../../App.css';
 
 const CoinsTable = () => {
     const [coinLists , setCoinLists] = useState('');
@@ -93,18 +94,23 @@ const CoinsTable = () => {
                                                 <FavCoin />
                                             </td>
                                             <td>
-                                                <Row>
-                                                    <Col md={3} >
-                                                        <img src={`${coin.image}`} alt={coin.name}
-                                                            style={{width:"50px", marginLeft:"8px"}}/>
-                                                    </Col>
-                                                    <Col md={9} className="mt-2">
-                                                       <h5 style={{fontWeight:"bold"}}>
-                                                            {coin.symbol.toUpperCase()}
-                                                        </h5>
-                                                        {coin.name}
-                                                    </Col>
-                                                </Row>
+                                                <Link to={`/home/${coin.id}`}
+                                                     style={{textDecoration:"none"}}>
+                                                    <Row>
+                                                        <Col md={3} >
+                                                            <img src={`${coin.image}`} alt={coin.name}
+                                                                style={{width:"50px", marginLeft:"8px"}}/>
+                                                        </Col>
+                                                        <Col md={9} className="mt-2">
+                                                            <h5 style={{fontWeight:"bold"}}
+                                                                className="coin-name">
+                                                                {coin.symbol.toUpperCase()}
+                                                            </h5>
+                                                            {coin.name}
+                                                        </Col>
+                                                    </Row>
+                                                </Link>
+                                                
                                             </td>
                                             <td>
                                                <b> {symbol} </b> {numberWithCommas(coin.current_price)}
