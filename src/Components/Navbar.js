@@ -1,4 +1,5 @@
 import { Container, Form , Row, Col} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 
 const Navbar = () => {
@@ -8,15 +9,16 @@ const Navbar = () => {
         <Container className="nav-bar p-2">
             <Row className="mt-3">
 
-                <Col md={8} xs={4}>
+                <Col md={8} xs={5}>
                     <h4 style={{fontWeight:"600",color:"#F6BA00"}}>
                         Crypto Tracker
                     </h4>
                 </Col>
-                <Col md={2} xs={4}>
-                    Watchlist
-                    &nbsp;
-                    <img src={require("../icon/red.png")} alt="heart icon"/>
+                <Col md={2} xs={3} className="mt-2">
+                <Link to={'/home'}
+                    style={{textDecoration:"none", color:"rgb(72, 68, 68)"}}>
+                    Home
+                </Link>
                 </Col>
                 <Col md={2} xs={4}>
                     <Form.Select  

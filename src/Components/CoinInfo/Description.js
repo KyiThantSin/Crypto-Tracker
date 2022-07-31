@@ -1,10 +1,10 @@
 import { Container, Col, Row } from "react-bootstrap";
 import { CryptoState } from "../../CryptoContext";
+import { numberWithCommas } from "../MainPageHeader/Coins";
+import ReactHtmlParser from 'html-react-parser'
 
 const Description = (props) => {
-    const {currency} = CryptoState();
-    console.log(currency.toLowerCase())
-    const sentence = props.coin.description?.en.split('.')[0];
+    const {currency,symbol} = CryptoState();
 
     return ( 
         <Container className="mt-4">
@@ -21,21 +21,21 @@ const Description = (props) => {
             </h1>
             <p style={{fontSize:"20px"}}
                 className="mt-3">
-                {sentence}.
+                {ReactHtmlParser(`${props.coin?.description?.en.split('. ')[0]}`)}.
             </p>
-            <h3 style={{fontWeight:"bold"}}>
+            <h4 style={{fontWeight:"bold"}}>
                 Rank: {props.coin.coingecko_rank}
-            </h3>
+            </h4>
 
-            <h3 style={{fontWeight:"bold"}}
+            <h4 style={{fontWeight:"bold"}}
                 className="mt-2">
-                Current Price: {props.coin.current_price?.[`${currency.toLowerCase()}`]}
-            </h3>
+                Current Price: <b>{symbol}</b> {numberWithCommas(props.coin.market_data?.current_price?.[`${currency.toLowerCase()}`])}
+            </h4>
 
-            <h3 style={{fontWeight:"bold"}}
+            <h4 style={{fontWeight:"bold"}}
                 className="mt-2 mb-3">
-                Market Cap: {props.coin.coingecko_rank}
-            </h3>
+                Market Cap: {numberWithCommas(props.coin.market_data?.market_cap?.[`${currency.toLowerCase()}`])?.toString().slice(0,-6)} M
+            </h4>
             
         </Container>
      );

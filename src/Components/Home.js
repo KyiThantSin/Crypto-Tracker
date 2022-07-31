@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import CarouselCard from "./MainPageHeader/CarouselCard";
-import Header from "./MainPageHeader/Header";
+import Header from "./MainPageHeader/Banner";
 import background from '../icon/bg1.jpg'
 import CoinsTable from "./CoinsTable/CoinsTable";
 
