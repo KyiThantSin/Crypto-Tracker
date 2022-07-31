@@ -9,7 +9,7 @@ import Coins from "./Coins";
 
 const CarouselCard = () => {
     const {currency} = CryptoState();
-    console.log(currency)
+    //console.log(currency)
     const [trendingCoins, setTrendingCoins] = useState();
 
     //fetch data

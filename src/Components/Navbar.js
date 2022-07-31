@@ -1,4 +1,4 @@
-import { Container, Form , Row, Col} from "react-bootstrap";
+import { Container, Form , Row, Col, Button} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CryptoState } from "../CryptoContext";
 
@@ -14,10 +14,10 @@ const Navbar = () => {
                         Crypto Tracker
                     </h4>
                 </Col>
-                <Col md={2} xs={3} className="mt-2">
+                <Col md={2} xs={3}>
                 <Link to={'/home'}
                     style={{textDecoration:"none", color:"rgb(72, 68, 68)"}}>
-                    Home
+                    <Button variant="light">Home</Button>
                 </Link>
                 </Col>
                 <Col md={2} xs={4}>
