@@ -35,12 +35,10 @@ const CoinsTable = () => {
 
     //search coinLists
     const onSearchEvent = (keywords) =>{
-       const handleSearch = coinLists.filter((coins)=> coins.name.toLowerCase().includes(keywords.toLowerCase()))
-        console.log(handleSearch)
-        setSearchCoin(handleSearch);
-        
+            const handleSearch = coinLists.filter((coins)=> coins.name.toLowerCase().includes(keywords.toLowerCase()))
+            setSearchCoin(handleSearch);  
     }
-
+    
     const tableData = searchCoin ? searchCoin : coinLists;
 
     //pagination

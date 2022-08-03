@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Container, Spinner } from "react-bootstrap";
+import { Button, Container, Spinner, Col, Row } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import {Chart , registerables} from 'chart.js';
 import { HistoricalChart } from "../../config/api";
